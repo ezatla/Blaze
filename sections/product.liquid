@@ -1,0 +1,88 @@
+<section class="product-page mx-auto mb-40">
+    <div class="flex flex-wrap">
+        <div class="w-1/2">
+            <!-- Primary Slider -->
+            <div class="splide" id="primary-slider">
+                <div class="splide__track">
+                    <ul class="splide__list ">
+                        {% for image in product.images %}
+                            <li class="splide__slide">
+                                <img src="{{image.src | product_img_url: 'master'}}" alt="{{product.title}}">
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <!-- Secondary Slider-->
+            <div class="splide" id="secondary-slider">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        {% for image in product.images %}
+                            <li class="splide__slide">
+                                <img src="{{image.src | product_img_url: 'master'}}" alt="{{product.title}}">
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="w-1/2">
+            <div class="product-info pl-8 mt-4">
+                {% for tags in product.tags.first %}
+                {% assign tag = tags | capitalize %}
+                    <span class="py-2 text-sm font-semibold p-1 rounded-sm tag">{{tag}}</span>
+                {% endfor %}
+
+                <h2 class="py-2 text-3xl font-semibold">{{product.title}}</h2>
+                <!-- <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div> -->
+                <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+
+                <div x-data="{ tab: 'info' }" class="mt-12 m-4 tabs">
+                    <div class="flex justify-around tab-header">
+                        {% for block in section.blocks %}
+                        <button class="text-base capitalize  font-semibold" :class="{ 'active': tab === '{{block.settings.heading}}' }" @click="tab = '{{block.settings.heading}}'">{{block.settings.heading}}</button>
+                        {% endfor %}
+                    </div>
+                    
+                    {% for content in section.blocks %}
+                    <div x-show="tab === '{{content.settings.heading}}'">{{content.settings.content}}</div>
+                    {% endfor %}
+                </div>      
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% schema %}
+{
+    "name": "Product",
+    "settings": [
+    {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading"
+    }],
+    "max_blocks": 3,
+    "blocks": [
+        {
+        "type": "text",
+        "name": "Product Info",
+        "settings" : [
+        {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "info"
+        },
+        {
+            "type": "richtext",
+            "id": "content",
+            "label": "Content",
+            "info": "Add the info content"
+        }
+        ]
+        }] 
+}
+{% endschema %}

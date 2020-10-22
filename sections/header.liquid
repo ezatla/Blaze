@@ -1,0 +1,30 @@
+{% include 'navigation' %}
+
+
+{% schema %}
+{
+"name": "Main Menu",
+"settings":[
+    {
+    "type": "link_list",
+    "id": "main_linklist",
+    "label": "Menu",
+    "default": "main-menu",
+    "info": "Add the main navigation"
+    },
+    {
+    "type": "text",
+    "id": "logo_text",
+    "label": "Logo Text",
+    "default": "Blaze",
+    "info": "Add the Logo"
+    },
+    {
+    "type": "image_picker",
+    "id": "logo_image",
+    "label": "Logo",
+    "info": "Add the Logo Image"
+    }
+    ]
+}
+{% endschema %}

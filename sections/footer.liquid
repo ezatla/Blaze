@@ -1,0 +1,71 @@
+<footer class="footer mt-10 pt-10 pb-10 bg-white">
+    <div class="container mx-auto">
+        <div class="flex flex-wrap">
+            <div class="w-full sm:w-2/5">
+                <h2 class="text-2xl font-semibold header">{{section.settings.footer_header}}</h2>
+                <div class="text-base text-gray-600 mt-3 leading-normal content">{{section.settings.footer_description}}</div>
+            </div>
+            {% for link in linklists[section.settings.footer_linklist].links %}
+                <ul class="w-full sm:w-1/5">
+                  <li>
+                      <h2 class="text-xl font-semibold header">{{link.title}}</h2>
+                      {% for sublink in link.links %}
+                          <ul class="mt-4 content">
+                              <li class="text-base text-gray-600 mt-3 leading-none cursor-pointer hover:text-black">
+                                  <a href="{{sublink.url}}">{{sublink.title}}</a>
+                              </li>
+                          </ul>
+                      {% endfor %}
+                  </li>  
+                </ul>
+            {% endfor %}
+        </div>
+    </div>
+</footer>
+<section class="sub_footer py-2">
+    <div class="container mx-auto">
+        <div class="flex justify-between">
+            <div class="w/1-2">
+                <p class="text-sm text-gray-600 mt-3 leading-normal px-2 sm:px-0">
+                   {{'now' | date: "%Y" }} &copy; Blaze Shop all rights reserved
+                </p>
+            </div>
+            <div class="w/1-2">
+                <p class="text-sm text-gray-600 mt-3 leading-normal">
+                    Developed By Ezzatulla
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "Footer Content",
+    "settings": [
+    {
+        "type": "text",
+        "id": "footer_header",
+        "label": "Footer Header",
+        "default": "Blaze Shop"
+    },
+    {
+        "type": "html",
+        "id": "footer_description",
+        "label": "Footer Description"
+    },
+    {
+        "type": "link_list",
+        "id": "footer_linklist",
+        "label": "Footer Menu",
+        "info": "Add the footer navigation"
+    },
+    {
+        "type": "checkbox",
+        "id": "sub_footer",
+        "label": "Show Sub Footer",
+        "default": true
+    }
+    ]
+}
+{% endschema %}
