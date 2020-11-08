@@ -1,0 +1,98 @@
+<section class="product-page mx-auto mb-40">
+    <div class="flex flex-wrap">
+        <div class="w-1/2">
+            <!-- Primary Slider -->
+            <div class="splide" id="primary-slider">
+                <div class="splide__track">
+                    <ul class="splide__list ">
+                        {% for image in product.images %}
+                            <li class="splide__slide">
+                                <img src="{{image.src | product_img_url: 'master'}}" alt="{{product.title}}">
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <!-- Secondary Slider-->
+            <div class="splide" id="secondary-slider">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        {% for image in product.images %}
+                            <li class="splide__slide">
+                                <img src="{{image.src | product_img_url: 'master'}}" alt="{{product.title}}">
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="w-1/2">
+            <div class="product-info pl-8 mt-4">
+                {% for tags in product.tags.first %}
+                    {% assign tag = tags | capitalize %}
+                    <span class="py-2 text-sm font-semibold p-1 rounded-sm tag">{{tag}}</span>
+                {% endfor %}
+
+                <h2 class="py-2 text-3xl font-semibold">{{product.title}}</h2>
+                <!-- <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div> -->
+                <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+
+                <h2 class="text-lg font-bold tracking-normal mt-3">{{product.price | money}}</h2>
+
+
+                <div class="mt-12 m-4 tabs" x-data="{ tab: 'info' }">
+                    <div class="flex justify-around tab-header">
+                        {% for block in section.blocks %}
+                            <button :class="{ 'active': tab === '{{block.settings.heading}}' }" @click="tab = '{{block.settings.heading}}'" class="text-base capitalize  font-semibold">{{block.settings.heading}}</button>
+                        {% endfor %}
+                    </div>
+
+                    {% for content in section.blocks %}
+                        <div x-show="tab === '{{content.settings.heading}}'">{{content.settings.content}}</div>
+                    {% endfor %}
+                </div>
+
+            </div>
+            <form action="/cart/add" method="post" class="flex justify-end mx-4 add_to_cart_form">
+                <input type="hidden" name="id" value="{{ product.variants.first.id }}"/>
+                <a href="#" class="quantity__minus"><span>-</span></a>
+                <input class="text-base font-bold quantity__input" id="quantity" min="1" name="quantity" type="number" value="1"/>
+                <a href="#" class="quantity__plus mr-8"><span>+</span></a>
+                <input class="btn_tertiary text-sm text-black font-bold py-2 px-4 rounded-sm" type="submit"  value="Add to cart"/>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+{% schema %}
+{
+    "name": "Product",
+    "settings": [
+    {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading"
+    }],
+    "max_blocks": 3,
+    "blocks": [
+        {
+        "type": "text",
+        "name": "Product Info",
+        "settings" : [
+        {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "info"
+        },
+        {
+            "type": "richtext",
+            "id": "content",
+            "label": "Content",
+            "info": "Add the info content"
+        }
+        ]
+        }] 
+}
+{% endschema %}

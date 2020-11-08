@@ -1,0 +1,302 @@
+// Note: "@import" rules aren’t supported.
+
+// Colors
+$light-gray: #E0E0E0;
+$dark-gray: #9E9E9E;
+$black: #010101;
+$light-black: #484849;
+
+// Mixins
+    //Breakpoints
+$small: 575.98px;
+$medium: 767.98px;
+$large: 1024.98px;
+$xlarge: 1199.98px;
+
+@mixin responsive ($size){
+    @if $size==small {
+        @media only screen and (max-width: $small) {
+            @content;
+          }
+    }
+    @if $size==medium {
+        @media only screen and (max-width: $medium) {
+          @content;
+        }
+      }
+    @if $size==large {
+        @media only screen and (max-width: $large) {
+          @content;
+        }
+      }
+    @if $size==xlarge {
+        @media only screen and (max-width: $xlarge) {
+          @content;
+        }
+      }
+}
+
+// Global styling
+button:focus,
+.focus\:text-black:focus{
+    outline: none;
+}
+
+.rounded-1{
+    border-radius: 1.1rem;
+}
+
+body{
+    font-family: 'Montserrat', sans-serif;
+    background: #F6F6F6;
+}
+// Buttons
+.btn_primary{
+    background-color: $light-black;
+    transition: 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
+    border: 1px solid $light-black;
+    color: #fff;
+
+    &:hover{
+        background-color: transparent;
+        border: 1px solid $light-black;
+        color: $black;
+    }
+}
+
+.btn_secondary{
+    background-color: $light-gray;
+    transition: 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
+    border: 1px solid $light-gray;
+
+    &:hover{
+        background-color: transparent;
+        border: 1px solid $light-gray;
+        color: #fff;
+    }
+}
+
+.btn_tertiary{
+    background-color: transparent;
+    transition: 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
+    border: 1px solid $light-black;
+    cursor: pointer;
+
+    &:hover{
+        background-color: $light-black;
+        border: 1px solid $light-black;
+        color: #fff;
+    }
+}
+
+// Input btn reset
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+
+
+// Header / Navigation bar
+.main_header{
+    {% assign icon_size = {{settings.icon_size}}%}
+    .lnr{
+        width: {{icon_size}}px;
+        height: {{icon_size}}px;
+    }
+
+    @include responsive(large){
+        .dropdown_wrapper{
+            .dropdown_links{
+                width: calc(100% - 3rem);
+                position: relative;
+                margin-left: 3rem;
+            }
+        }
+    }
+}
+// Image with text
+.image_with_text{
+    // background-size: cover;
+}
+// collections-lists
+.collections-lists{
+    .wrapper{
+        .custom_wrapper{
+            height: 60vh;
+            border-radius: 1.5rem;
+            display: flex;
+
+            h1{
+                margin: 2rem;
+            }
+        }
+    }
+}
+// Product lists slider
+.product-lists-slider{
+    .splide__arrows{
+        .splide__arrow--prev{
+            font-size: 1.2rem;
+            left: -2rem;
+            background: transparent;
+        }
+        .splide__arrow--next{
+            font-size: 1.2rem;
+            right: -2rem;
+            background: transparent;
+        }
+    }
+    .splide__pagination{
+        bottom: -1.4rem;
+
+        li{
+            margin: 0 4px;
+            .splide__pagination__page{
+                background: #A4A7AF;
+            }
+            .is-active{
+                background: #1C2537;
+
+                &:before{
+                    content: '';
+                    position: absolute;
+                    background: transparent;
+                    border: 1px solid #D1D3D7;
+                    width: 14px;
+                    height: 14px;
+                    border-radius: 50px;
+                    top: -3.5px;
+                    left: -2.8px;
+                }
+            }
+        }
+    }
+
+}
+
+// Product Lists (without Slider)
+
+.product-lists{
+    .products_wrapper{
+        .image_wrapper{
+            overflow: hidden;
+            max-height: 40vh;
+        }
+        .product_footer{
+            min-height: 200px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+        }
+    }
+}
+
+
+// Product page
+.product-page{
+    #primary-slider{
+        .splide__arrows{
+            display: none;
+        }
+        .splide__list{
+            transform: translateX(0) !important;
+        }
+    }
+    .splide__slide img {
+        width : 100%;
+        height: auto;
+    }
+
+    .splide--nav>.splide__track>.splide__list>.splide__slide{
+        border: 1px solid transparent;
+    }
+    .splide--nav>.splide__track>.splide__list>.splide__slide.is-active{
+        border-color: $dark-gray;
+    }
+
+    .tag{
+        background: $light-gray;
+    }
+    .tabs{
+        padding: 0.1rem 0rem;
+        .tab-header{
+            color: $dark-gray;
+            border-bottom: 1.4px solid $light-gray;
+
+            & .active{
+                color: $black;
+            }
+        }
+    }
+
+    // add to cart form
+    .add_to_cart_form{
+        .quantity {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+          }
+          .quantity__minus,
+          .quantity__plus {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 2rem;
+            height: 2.4rem;
+            background: #dee0ee;
+            text-decoration: none;
+            text-align: center;
+            line-height: 23px;
+          }
+          .quantity__minus:hover,
+          .quantity__plus:hover {
+            background: $light-black;
+            color: #fff;
+          }
+          .quantity__minus {
+            border-radius: 3px 0 0 3px;
+          }
+          .quantity__plus {
+            border-radius: 0 3px 3px 0;
+          }
+          .quantity__input {
+            width: 4rem;
+            height: 2.4rem;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            border-top: 2px solid #dee0ee;
+            border-bottom: 2px solid #dee0ee;
+            border-left: 1px solid #dee0ee;
+            border-right: 2px solid #dee0ee;
+            background: #fff;
+            color: #8184a1;
+          }
+          .quantity__minus:link,
+          .quantity__plus:link {
+            color: #8184a1;
+          }
+          .quantity__minus:visited,
+          .quantity__plus:visited {
+            color: #fff;
+          }
+    }
+      
+}
+
+
+// Footer
+.footer{
+    @include responsive(small){
+        .header{
+            margin-left: 1rem;
+            margin-top: 1.5rem;
+        }
+        .content{
+            margin-left: 2rem;
+        }
+    }
+}

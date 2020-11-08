@@ -1,0 +1,68 @@
+<!-- Variables -->
+{% assign section = section.settings %}
+
+<section class="image_with_text" 
+style="background: url({{section.image | img_url: 'master'}}); height: {{section.bg_height}}rem; background-size: cover;">
+    <div class="container mx-auto h-full">
+        <div class="h-full">
+            <div class="w-full flex items-center h-full">
+                <div class="text_wrapper text-white items-center">
+                    <h1 class="text-3xl tracking-wide leading-8">{{section.heading}}</h1>
+                    <div class="text-sm leading-5 my-5">{{section.info}}</div>
+                    <a href="{{section.link}}" class="btn_secondary text-sm text-black font-bold py-2 px-4 rounded-sm">{{section.button}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+  "name": "Image with text",
+  "settings": [
+    {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Blazing"
+    },
+    {
+        "type": "richtext",
+        "id": "info",
+        "label": "Description",
+        "default": "<p>Blazing is <em>Blazing</em>"
+    },
+    {
+        "type": "url",
+        "id": "link",
+        "label": "Button link"
+      },
+    {
+        "type": "text",
+        "id": "button",
+        "label": "Button",
+        "default": "View More"
+    },
+    {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Background Image"
+    },
+    {
+        "type":      "range",
+        "id":        "bg_height",
+        "min":       20,
+        "max":        60,
+        "step":       1,
+        "unit":       "rem",
+        "label":     "Background Height",
+        "default":   30
+    }
+    ],
+
+  "presets": [{
+    "name": "Image with Text",
+    "category": "Hero"
+  }]
+}
+{% endschema %}

@@ -1,0 +1,112 @@
+<section class="collections-lists mt-10">
+    <div class="container mx-auto">
+        <div class="flex flex-wrap">
+            <div class="w-full sm:w-full md:w-1/2 px-2 pb-px md:py-6">
+                <div class="wrapper">
+                    {% for collection in collections%}
+                        {% assign title = section.settings.title_1 %}
+                        {% assign collection_title = collection.title %}
+                        {% if collection_title contains title %}
+                        <a href="{{collection.url}}">
+                            <div class="custom_wrapper shadow-lg hover:shadow-xl transition duration-200 ease-in-out cursor-pointer" style="background: url({{ collection.image.src | img_url: 'master' }}); background-size: cover;">
+                                <h1 class="text-3xl font-bold tracking-wide">{{collection.title}}</h1>
+                                <!-- <img src="{{ collection.image | img_url: 'master' }}" alt="{{ collection.image.alt }}"/> -->
+                            </div>
+                        </a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="w-full sm:w-full md:w-1/2 p-5 pr-px">
+                <div class="wrapper">
+                    <div class="mini_collection flex">
+                        <div class="w-1/2 ">
+                            {% for collection in collections%}
+                                {% assign title = section.settings.title_2 %}
+                                {% assign collection_title = collection.title | downcase %}
+                                {% if collection_title contains title %}
+                                  <a href="{{collection.url}}">
+                                        <div class=" h-full mx-2 bg-gray-400 rounded-1 flex justify-start items-end shadow-lg hover:shadow-xl transition duration-200 ease-in-out cursor-pointer">
+                                            <h1 class="text-2xl m-8 font-bold tracking-wide">{{collection.title}}</h1>
+                                            <!-- <img src="{{ collection.image | img_url: 'master' }}" alt="{{ collection.image.alt }}"/> -->
+                                        </div>
+                                  </a>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <div class="w-1/2">
+                            {% for collection in collections%}
+                                {% assign title = section.settings.title_3 %}
+                                {% assign collection_title = collection.title | downcase %}
+                                {% if collection_title contains title %}
+                                   <a href="{{collection.url}}">
+                                        <div class=" flex justify-start items-end  mx-2 rounded-1 overflow-hidden shadow-lg hover:shadow-xl transition duration-200 ease-in-out cursor-pointer" style="background: url({{ collection.image.src | img_url: 'master' }}); background-size: cover; height: 30vh;">
+                                            <h1 class="text-2xl m-8 font-bold tracking-wide">{{collection.title}}</h1>
+                                            <!-- <img src="{{ collection.image | img_url: 'master' }}" alt="{{ collection.image.alt }}"/> -->
+                                        </div>
+                                   </a>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="sub_mini_collection p-2">
+                        <div class="w-full">
+                            {% for collection in collections%}
+                                {% assign title = section.settings.title_4 %}
+                                {% assign collection_title = collection.title %}
+                                {% if collection_title contains title %}
+                                  <a href="{{collection.url}}">
+                                        <div class="flex justify-start items-end  rounded-1 overflow-hidden shadow-lg hover:shadow-xl transition duration-200 ease-in-out cursor-pointer" style="background: url({{ collection.image.src | img_url: 'master' }}); background-size: cover; height: 30vh;">
+                                            <h1 class="text-3xl m-8 font-bold tracking-wide">{{collection.title}}</h1>
+                                            <!-- <img src="{{ collection.image | img_url: 'master' }}" alt="{{ collection.image.alt }}"/> -->
+                                        </div>
+                                  </a>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "Collections",
+    "settings": [
+    {
+        "type": "text",
+        "id": "title_1",
+        "label": "Collection 1",
+        "default": "Women",
+        "info": "Add the collection title"
+        },
+    {
+        "type":      "text",
+        "id":        "title_2",
+        "label":     "Collection 2",
+        "default":   "bestseller",
+        "info":      "Add the collection title"
+     },
+    {
+        "type":      "text",
+        "id":        "title_3", 
+        "default":   "hoodie",
+        "label":     "Collection 3",
+        "info":      "Add the collection title"
+     },
+    {
+        "type":      "text",
+        "id":        "title_4",
+        "label":     "Collection 4",
+        "default":   "Mens",
+        "info":      "Add the collection title"
+     }
+    ],
+    "presets": [{
+        "name": "Collection Lists",
+        "category": "Collection"
+    }]
+}
+{% endschema %}
