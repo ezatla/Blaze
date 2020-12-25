@@ -29,7 +29,11 @@
         <div class="w-1/2">
             <div class="product-info pl-8 mt-4">
                 {% for tags in product.tags.first %}
+<<<<<<< HEAD
                 {% assign tag = tags | capitalize %}
+=======
+                    {% assign tag = tags | capitalize %}
+>>>>>>> origin/beast
                     <span class="py-2 text-sm font-semibold p-1 rounded-sm tag">{{tag}}</span>
                 {% endfor %}
 
@@ -37,6 +41,7 @@
                 <!-- <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div> -->
                 <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
 
+<<<<<<< HEAD
                 <div x-data="{ tab: 'info' }" class="mt-12 m-4 tabs">
                     <div class="flex justify-around tab-header">
                         {% for block in section.blocks %}
@@ -48,6 +53,31 @@
                     {% endfor %}
                 </div>      
             </div>
+=======
+                <h2 class="text-lg font-bold tracking-normal mt-3">{{product.price | money}}</h2>
+
+
+                <div class="mt-12 m-4 tabs" x-data="{ tab: 'info' }">
+                    <div class="flex justify-around tab-header">
+                        {% for block in section.blocks %}
+                            <button :class="{ 'active': tab === '{{block.settings.heading}}' }" @click="tab = '{{block.settings.heading}}'" class="text-base capitalize  font-semibold">{{block.settings.heading}}</button>
+                        {% endfor %}
+                    </div>
+
+                    {% for content in section.blocks %}
+                        <div x-show="tab === '{{content.settings.heading}}'">{{content.settings.content}}</div>
+                    {% endfor %}
+                </div>
+
+            </div> 
+            <form action="/cart/add" method="post" class="flex justify-end mx-4 add_to_cart_form">
+                <input type="hidden" name="id" value="{{ product.variants.first.id }}"/>
+                <a href="#" class="quantity__minus"><span>-</span></a>
+                <input class="text-base font-bold quantity__input" id="quantity" min="1" name="quantity" type="number" value="1"/>
+                <a href="#" class="quantity__plus mr-8"><span>+</span></a>
+                <input class="btn_tertiary text-sm text-black font-bold py-2 px-4 rounded-sm" type="submit"  value="Add to cart"/>
+            </form>
+>>>>>>> origin/beast
         </div>
     </div>
 </section>
