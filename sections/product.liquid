@@ -43,12 +43,10 @@
                         <button class="text-base capitalize  font-semibold" :class="{ 'active': tab === '{{block.settings.heading}}' }" @click="tab = '{{block.settings.heading}}'">{{block.settings.heading}}</button>
                         {% endfor %}
                     </div>
-                    
                     {% for content in section.blocks %}
-                    <div x-show="tab === '{{content.settings.heading}}'">{{content.settings.content}}</div>
+                        <div x-show="tab === '{{content.settings.heading}}'">{{content.settings.content}}</div>
                     {% endfor %}
                 </div>      
-
             </div>
         </div>
     </div>

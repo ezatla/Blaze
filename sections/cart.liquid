@@ -1,0 +1,40 @@
+<div class="container mx-auto py-10">
+    {% if cart.item_count > 0 %}
+      <h1>Shopping Cart</h1>
+      <form action="/cart" method="post" novalidate>
+          <div class="container mx-auto">
+            {% for item in cart.items %}
+              <div class="my-6 flex items-center">
+                <div class="mr-6">
+                  <a href="{{ item.url | within: collections.all }}">
+                    <img src="{{ item | img_url: 'medium' }}" class="rounded-50 object-cover h-100 w-100" alt="{{ item.title | escape }}">
+                  </a>
+                </div>
+                <div class="flex-grow">
+                  <a href="{{ item.url }}">{{ item.product.title }}</a>
+                </div>
+                <div class="flex-grow">{{ item.price | money }}</div>
+                <div>
+                  <input type="number" name="updates[]" id="updates_{{ item.key }}" value="{{ item.quantity }}" min="0">
+                </div>
+                <div class="flex-grow">
+                  {% if item.original_line_price != item.line_price %}{{ item.original_line_price | money }}{% endif %}
+                  {{ item.line_price | money }}
+                  {% for discount in item.discounts %}{{ discount.title }}{% endfor %}
+                  <a class="float-right" href="/cart/change?line={{ forloop.index }}&amp;quantity=0">X</a>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        <div class="flex w-11/12 justify-end">
+          <p>sub total : {{ cart.total_price | money }}</p>
+          <button type="submit" name="update">Update</button>
+          <button type="submit" name="checkout">Checkout</button>
+        </div>
+      </form>
+    {% else %}
+      <h2>cart</h2>
+      Cart is empty
+    {% endif %}
+
+</div> 

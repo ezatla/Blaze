@@ -1,6 +1,118 @@
 {
-  "current": "Default",
+  "current": {
+    "dropdown_bg": "#efeff4",
+    "header_bg": "#efeff4",
+    "cart_icon": "cart",
+    "user_icon": "user",
+    "icon_size": 18,
+    "checkout_header_image": "",
+    "checkout_logo_image": "",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "medium",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#fff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_accent_color": "#197bbd",
+    "checkout_button_color": "#197bbd",
+    "checkout_error_color": "#e32c2b",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "main_linklist": "main-menu",
+          "logo_text": "Blaze",
+          "logo_image": "shopify:\/\/shop_images\/logo.png"
+        }
+      },
+      "1598515063056": {
+        "type": "image-with-text",
+        "settings": {
+          "heading": "Admire Stylish <br>Dresses & Looks",
+          "info": "<p>If we wanted to build a human-level tool to offer<\/p>\n<p>automated outfit advice, we needed to understand<\/p>\n<p>people&rsquo;s fashion taste.<\/p>",
+          "link": "shopify:\/\/collections\/bestsellers",
+          "button": "View More",
+          "image": "shopify:\/\/shop_images\/Masthead_Desktop_New_tcm226-550365.jpg",
+          "bg_height": 35
+        }
+      },
+      "1598576594058": {
+        "type": "collections-lists",
+        "settings": {
+          "title_1": "Women",
+          "title_2": "bestseller",
+          "title_3": "hoodie",
+          "title_4": "Mens"
+        }
+      },
+      "1599821183205": {
+        "type": "product-lists-slider",
+        "settings": {
+          "collection": "frontpage"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "footer_header": "Blaze Shop",
+          "footer_description": "<p>Fashion is a popular <br> aesthetic expression at a particular <br> time, place and in a specific context, <br> especially in clothing, footwear, <br> lifestyle, accessories, makeup.<\/p>",
+          "footer_linklist": "footer",
+          "sub_footer": true
+        }
+      },
+      "1599879234698": {
+        "type": "product-lists",
+        "settings": {
+          "heading": "You may like",
+          "collection": "frontpage"
+        }
+      },
+      "product": {
+        "type": "product",
+        "blocks": {
+          "1601275642378": {
+            "type": "text",
+            "settings": {
+              "heading": "info",
+              "content": "<p>lace and in a<\/p>\n<p>ce and in a<\/p>"
+            }
+          },
+          "1601276133718": {
+            "type": "text",
+            "settings": {
+              "heading": "band",
+              "content": "<p>esthetic expression at a particular<br>time, place and in a<\/p>"
+            }
+          },
+          "1601276139365": {
+            "type": "text",
+            "settings": {
+              "heading": "delivery",
+              "content": "<p>ce and in a<\/p>\n<p>esthetic expre<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "1601275642378",
+          "1601276133718",
+          "1601276139365"
+        ],
+        "settings": {
+          "heading": ""
+        }
+      }
+    },
+    "content_for_index": [
+      "1598515063056",
+      "1598576594058",
+      "1599821183205",
+      "1599879234698"
+    ]
+  },
   "presets": {
-    "Default": { }
+    "Default": {}
   }
 }

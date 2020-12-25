@@ -58,5 +58,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Set the thumbnails slider as a sync target and then call mount.
   primarySlider.sync(secondarySlider).mount();
-
 });
+
+// Cart Buttons
+document.addEventListener("DOMContentLoaded", function () {
+  const minus = document.querySelector(".quantity__minus");
+  const plus = document.querySelector(".quantity__plus");
+  const input = document.querySelector(".quantity__input");
+
+  let value = parseInt(input.value);
+  console.log(value);
+  // minus btn
+  minus.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    // let value = parseInt(input.value);
+    if (value > 1) {
+      value -= 1;
+    }
+    input.value = value;
+  });
+
+  // plus btn
+  plus.addEventListener("click", function (e) {
+    e.preventDefault();
+    // let value = parseInt(input.value);
+    // console.log(typeof value);
+      value += 1;
+      input.value = value;
+  });
+});
+ 
