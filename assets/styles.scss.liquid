@@ -5,6 +5,8 @@ $light-gray: #E0E0E0;
 $dark-gray: #9E9E9E;
 $black: #010101;
 $light-black: #484849;
+$light-blue: #42a5f5;
+$light-purple: #a9aeda;
 
 // Mixins
     //Breakpoints
@@ -88,6 +90,29 @@ body{
         color: #fff;
     }
 }
+.btn_checkout{
+    background-color: $light-purple;
+    transition: 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
+    border: 1px solid $light-purple;
+    cursor: pointer;
+    color: #fff;
+
+    &:hover{
+        background-color: transparent;
+        border: 1px solid $light-purple;
+        color: #000;
+    }
+}
+
+// uitls classes
+
+.h-120{
+    height: 120px;
+}
+.w-120{
+    width: 120px;
+}
+
 
 // Input btn reset
 input[type=number]::-webkit-inner-spin-button, 
@@ -95,8 +120,6 @@ input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none; 
   margin: 0; 
 } 
-
-
 
 // Header / Navigation bar
 .main_header{
@@ -127,10 +150,6 @@ input[type=number]::-webkit-outer-spin-button {
             height: 60vh;
             border-radius: 1.5rem;
             display: flex;
-
-            h1{
-                margin: 2rem;
-            }
         }
     }
 }
@@ -183,12 +202,20 @@ input[type=number]::-webkit-outer-spin-button {
         .image_wrapper{
             overflow: hidden;
             max-height: 40vh;
-        }
+        } 
         .product_footer{
             min-height: 200px;
             display: flex;
             flex-wrap: wrap;
             align-items: baseline;
+        }
+        .collection-products{
+
+            & img{
+                max-height: 415px;
+                width: 100%;
+                object-fit: cover;
+            }
         }
     }
 }
@@ -199,10 +226,15 @@ input[type=number]::-webkit-outer-spin-button {
     #primary-slider{
         .splide__arrows{
             display: none;
-        }
+          }
         .splide__list{
             transform: translateX(0) !important;
         }
+    }
+    .splide__arrow{
+        @media (max-width: 640px) { 
+            display: none !important;
+     }
     }
     .splide__slide img {
         width : 100%;
@@ -230,7 +262,6 @@ input[type=number]::-webkit-outer-spin-button {
             }
         }
     }
-
     // add to cart form
     .add_to_cart_form{
         .quantity {
@@ -284,9 +315,8 @@ input[type=number]::-webkit-outer-spin-button {
             color: #fff;
           }
     }
-      
-}
 
+}
 
 // Footer
 .footer{
@@ -299,4 +329,10 @@ input[type=number]::-webkit-outer-spin-button {
             margin-left: 2rem;
         }
     }
+}
+
+// cart page
+
+.cart-section{
+    
 }

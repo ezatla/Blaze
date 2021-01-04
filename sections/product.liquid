@@ -1,6 +1,6 @@
 <section class="product-page mx-auto mb-40">
     <div class="flex flex-wrap">
-        <div class="w-1/2">
+        <div class="w-full md:w-1/2">
             <!-- Primary Slider -->
             <div class="splide" id="primary-slider">
                 <div class="splide__track">
@@ -26,8 +26,8 @@
                 </div>
             </div>
         </div>
-        <div class="w-1/2">
-            <div class="product-info pl-8 mt-4">
+        <div class="w-full md:w-1/2">
+            <div class="product-info p-2 sm:pl-8 mt-4">
                 {% for tags in product.tags.first %}
                     {% assign tag = tags | capitalize %}
                      <span class="py-2 text-sm font-semibold p-1 rounded-sm tag">{{tag}}</span>
